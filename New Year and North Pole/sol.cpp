@@ -1,0 +1,70 @@
+#include <bits/stdc++.h>
+
+#define maxn 100000008
+#define pp push_back
+#define pf push_front
+#define mp make_pair
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+	int n;
+	scanf("%d", &n);
+	int d;
+	int a = 0, b = 0;
+	bool foo = true, bar = false, e = false, w = false;
+	while(n--){
+		char s[10];
+		scanf("%d", &d);
+		scanf("%s", s);
+		if(s[0]=='N'){
+			if(foo){
+				puts("NO");
+				return 0;
+			}
+			foo = false;
+			bar = false;
+			a -= d;
+			if(a==0){
+				foo = true;
+			}else if(a<0){
+				puts("NO");
+				return 0;
+			}
+		}
+		if(s[0]=='S'){
+			if(bar){
+				puts("NO");
+				return 0;
+			}
+			foo = false;
+			bar = false;
+			a += d;
+			if(a==20000){
+				bar = true;
+			}else if(a>20000){
+				puts("NO");
+				return 0;
+			}
+		}
+		if(s[0]=='E'){
+			if(foo || bar){
+				puts("NO");
+				return 0;
+			}
+			b += d%40000;
+			e = true;
+		}
+		if(s[0]=='W'){
+			if(foo || bar){
+				puts("NO");
+				return 0;
+			}
+			b -= d%40000;
+			w = true;
+		}
+	}
+	puts(a==0 ? "YES" : "NO");
+	return 0;
+}

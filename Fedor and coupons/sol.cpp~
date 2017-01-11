@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+
+#define maxn 100000008
+#define pp push_back
+#define pf push_front
+#define mp make_pair
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+	int n, k;
+	scanf("%d %d", &n, &k);
+	int a, b;
+	scanf("%d %d", &a, &b);
+	vector<int> l;
+	vector<int> r;
+	int count = 1;
+	int ans = 0;
+	for (int i = 1; i < n; ++i) {
+		if(count == k)break;
+		int x, y;
+		scanf("%d %d", &x, &y);
+		if(x <= b){
+			l.pp(x);
+			r.pp(y);
+			count++;
+			ans = min(b, y) - x + 1;
+		}
+	}
+	printf("%d\n", ans);
+	return 0;
+}

@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+
+#define maxn 100000008
+#define pp push_back
+#define pf push_front
+#define mp make_pair
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+	int n;
+	scanf("%d", &n);
+	char s[n];
+	scanf("%s", s);
+	vector<int> v;
+	int b = 0;
+	for (int i = 0; i < n; ++i) {
+		if(s[i] == 'W'){
+			if(b>0){
+				v.pp(b);
+				b = 0;
+			}
+		}else{
+			b++;
+		}
+	}
+	int ans =  v.size();
+	if(b > 0 )ans++;
+	printf("%d\n", ans);
+	for (int i = 0; i < v.size(); ++i) {
+		printf("%d ", v[i]);
+	}
+	if(b > 0 )printf("%d\n", b);
+	return 0;
+}

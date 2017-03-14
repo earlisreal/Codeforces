@@ -1,0 +1,71 @@
+#include <bits/stdc++.h>
+
+#define maxn 100000008
+#define pp push_back
+#define pf push_front
+#define mp make_pair
+#define fs first
+#define sc second
+#define ll long long
+#define ull unsigned long long
+
+using namespace std;
+
+bool check(string s){
+	for (int i = 0; i < s.length(); ++i) {
+		if(s[i] == '!')return true;
+	}
+	return false;
+}
+
+int main(int argc, char *argv[])
+{
+	string s;
+	cin >> s;
+	int len = s.length();
+	int r, b, y, g;
+	r = b = y = g = 0;
+	int l,m,n,o;
+	l = m = n = o = 0;
+	while(check(s)){
+		for (int i = 0; i < len - 3; ++i) {
+			int count = 0;
+			int index;
+			l = m = n = o = 0;
+			for (int j = 0; j < 4; ++j) {
+					if(s[i+j] == 'R')l++;
+					if(s[i+j] == 'B')m++;
+					if(s[i+j] == 'Y')n++;
+					if(s[i+j] == 'G')o++;
+					if(s[i+j] == '!'){
+						count++;
+						index = i + j;
+					}
+			}
+			if(count == 1){
+				if(l < 1){
+					s[index] = 'R';
+					r++;
+					continue;
+				}
+				if(m < 1){
+					s[index] = 'B';
+					b++;
+					continue;
+				}
+				if(n < 1){
+					s[index] = 'Y';
+					y++;
+					continue;
+				}
+				if(o < 1){
+					s[index] = 'G';
+					g++;
+					continue;
+				}
+			}
+		}
+	}
+	printf("%d %d %d %d\n", r, b, y, g);
+	return 0;
+}

@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+
+#define maxn 100000008
+#define pp push_back
+#define pf push_front
+#define mp make_pair
+#define fs first
+#define sc second
+#define ll long long
+#define ull unsigned long long
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+	int a, b, c;
+	scanf("%d %d %d", &a, &b, &c);
+	int m;
+	scanf("%d", &m);
+	pair<int, char> p[m];
+	for (int i = 0; i < m; ++i) {
+		int x;
+		scanf("%d", &x);
+		char s[10];
+		scanf("%s", s);
+		p[i] = mp(x, s[0]);
+	}
+
+	for (int i = 0; i < m; ++i) {
+		printf("%d %c\n", p[i].fs, p[i].sc);
+	}
+	return 0;
+}
+
